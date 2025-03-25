@@ -1,0 +1,36 @@
+﻿@model PetAdoptionManagement.Models.Pet
+
+@{
+    ViewData["Title"] = "Pet Details";
+}
+
+<h2>Pet Details</h2>
+
+<dl class="row">
+    <dt class="col-sm-2">Name:</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">Breed:</dt>
+    <dd class="col-sm-10">@Model.Breed</dd>
+
+    <dt class="col-sm-2">Age:</dt>
+    <dd class="col-sm-10">@Model.Age</dd>
+
+    <dt class="col-sm-2">Description:</dt>
+    <dd class="col-sm-10">@Model.Description</dd>
+
+    <dt class="col-sm-2">Status:</dt>
+    <dd class="col-sm-10">
+        <span class="badge @(Model.Status == "Adopted" ? "bg-danger" : "bg-success")">
+            @Model.Status
+        </span>
+    </dd>
+
+    @if (Model.Status == "Adopted" && Model.Adopter != null)
+    {
+        <dt class="col-sm-2">Adopter:</dt>
+        <dd class="col-sm-10">@Model.Adopter.FullName</dd>
+    }
+</dl>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

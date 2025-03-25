@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Frequently Asked Questions";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center fw-bold">📖 Frequently Asked Questions (FAQ)</h1>
+    <p class="text-center text-muted">Find answers to common pet adoption questions.</p>
+
+    <div class="accordion mt-4" id="faqAccordion">
+        <!-- Question 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true">
+                    🐶 How can I adopt a pet?
+                </button>
+            </h2>
+            <div id="faqCollapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Browse available pets, fill out an adoption form, and schedule a visit!
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2">
+                    🏡 What are the adoption requirements?
+                </button>
+            </h2>
+            <div id="faqCollapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    You must be 18+, provide proof of residence, and pass a home check.
+                </div>
+            </div>
+        </div>
+
+        <!-- More questions... -->
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">🏠 Back to Home</a>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model PetAdoptionManagement.Models.Adopter
+
+@{
+    ViewData["Title"] = "Edit Adopter";
+}
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h2 class="fw-bold text-dark">✏️ Edit Adopter Profile 🐾</h2>
+        <p class="text-muted">Modify adopter details and save the changes.</p>
+    </div>
+
+    <div class="card shadow-lg p-4 mt-3 mx-auto" style="max-width: 500px; background: #f7f7f7;">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="AdopterID" />
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Full Name</label>
+                <input asp-for="FullName" class="form-control rounded-pill px-3" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Email</label>
+                <input asp-for="Email" type="email" class="form-control rounded-pill px-3" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Phone</label>
+                <input asp-for="Phone" type="tel" class="form-control rounded-pill px-3" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Address</label>
+                <textarea asp-for="Address" class="form-control rounded-3 px-3" rows="3"></textarea>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success px-4 py-2 rounded-pill fw-bold">💾 Save Changes</button>
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-pill">❌ Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

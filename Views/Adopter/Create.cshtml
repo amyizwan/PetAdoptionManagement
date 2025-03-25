@@ -1,0 +1,46 @@
+﻿@model PetAdoptionManagement.Models.Adopter
+
+@{
+    ViewData["Title"] = "Create Adopter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h2 class="fw-bold text-dark">🐶 Create Adopter Profile 🐾</h2>
+        <p class="text-muted">Fill in the details to register a new adopter.</p>
+    </div>
+
+    <div class="card shadow-lg p-4 mt-3 mx-auto" style="max-width: 500px; background: #ffe6f2;">
+        <form asp-controller="Adopter" asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Full Name</label>
+                <input asp-for="FullName" class="form-control rounded-pill px-3" placeholder="Enter full name" required />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Email</label>
+                <input asp-for="Email" type="email" class="form-control rounded-pill px-3" placeholder="Enter email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Phone</label>
+                <input asp-for="Phone" type="tel" class="form-control rounded-pill px-3" placeholder="Enter phone number" required />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Address</label>
+                <textarea asp-for="Address" class="form-control rounded-3 px-3" rows="3" placeholder="Enter address" required></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success px-4 py-2 rounded-pill fw-bold">✅ Save</button>
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-pill">❌ Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model PetAdoptionManagement.Models.Pet
+
+@{
+    ViewData["Title"] = "Edit Pet";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4 rounded-4" style="width: 40rem; background: #ffe6f2;">
+        <h2 class="text-center text-dark">🐾 Edit Pet Details 🐾</h2>
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="PetID" />
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Pet Name</label>
+                <input asp-for="Name" class="form-control rounded-pill" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Age</label>
+                <input asp-for="Age" type="number" class="form-control rounded-pill" required />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Breed</label>
+                <input asp-for="Breed" class="form-control rounded-pill" />
+                <span asp-validation-for="Breed" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Description</label>
+                <textarea asp-for="Description" class="form-control rounded-3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Status</label>
+                <select asp-for="Status" class="form-control rounded-pill" id="statusDropdown">
+                    <option value="Available">Available</option>
+                    <option value="Adopted">Adopted</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3" id="adopterSection" style="display: none;">
+                <label class="form-label fw-bold">Adopter</label>
+                <select asp-for="AdopterID" class="form-control rounded-pill" asp-items="ViewBag.Adopters">
+                    <option value="">-- Select Adopter --</option>
+                </select>
+                <span asp-validation-for="AdopterID" class="text-danger"></span>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success px-4 py-2 rounded-pill">💖 Save Changes</button>
+                <a asp-action="Index" class="btn btn-secondary px-4 py-2 rounded-pill">❌ Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const statusDropdown = document.getElementById("statusDropdown");
+            const adopterSection = document.getElementById("adopterSection");
+
+            function toggleAdopterField() {
+                adopterSection.style.display = statusDropdown.value === "Adopted" ? "block" : "none";
+            }
+
+            statusDropdown.addEventListener("change", toggleAdopterField);
+            toggleAdopterField(); // Ensure correct state on page load
+        });
+    </script>
+}

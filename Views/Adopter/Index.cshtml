@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PetAdoptionManagement.Models.Adopter>
+
+@{
+    ViewData["Title"] = "Adopter List";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark">👤 Adopter List</h2>
+        <a asp-action="Create" class="btn btn-success rounded-pill px-4 py-2 fw-bold">
+            ➕ Add New Adopter
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered shadow-lg">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var adopter in Model)
+                {
+                    <tr class="text-center">
+                        <td class="fw-bold">@adopter.FullName</td>
+                        <td>@adopter.Email</td>
+                        <td>@adopter.Phone</td>
+                        <td>@adopter.Address</td>
+                        <td>
+                            <a asp-controller="Adopter" asp-action="Edit" asp-route-id="@adopter.AdopterID"
+                               class="btn btn-sm btn-warning rounded-pill px-3">
+                                ✏️ Edit
+                            </a>
+                            <form asp-controller="Adopter" asp-action="Delete" asp-route-id="@adopter.AdopterID"
+                                  method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-danger rounded-pill px-3"
+                                        onclick="return confirm('Are you sure you want to delete this adopter?');">
+                                    ❌ Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
